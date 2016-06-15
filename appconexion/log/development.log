@@ -1,0 +1,132 @@
+  [1m[36m (441.0ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (1047.1ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateAlumnos (20160613221644)
+  [1m[35m (353.0ms)[0m  CREATE TABLE `alumnos` (`id` int(11) auto_increment PRIMARY KEY, `nombre` varchar(255), `apellido` varchar(255), `nac` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160613221644')
+  [1m[36m (30.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMateria (20160613221827)
+  [1m[35m (237.0ms)[0m  CREATE TABLE `materia` (`id` int(11) auto_increment PRIMARY KEY, `nombre` varchar(255), `grado` varchar(255), `proyecto_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_materia_on_proyecto_id`  (`proyecto_id`) ) ENGINE=InnoDB
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (13.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160613221827')
+  [1m[36m (35.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProyectos (20160613221852)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateProyectos (20160613221852)
+  [1m[35m (241.0ms)[0m  CREATE TABLE `proyectos` (`id` int(11) auto_increment PRIMARY KEY, `nombre_proyecto` varchar(255), `horas` varchar(255), `alumno_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_proyectos_on_alumno_id`  (`alumno_id`) ) ENGINE=InnoDB
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (8.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160613221852')
+  [1m[36m (32.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'appconexion_development'
+  AND fk.table_name = 'alumnos'
+[0m
+  [1m[35m (1.0ms)[0m  SHOW CREATE TABLE `alumnos`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'appconexion_development'
+  AND fk.table_name = 'materia'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `materia`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'appconexion_development'
+  AND fk.table_name = 'proyectos'
+[0m
+  [1m[35m (1.0ms)[0m  SHOW CREATE TABLE `proyectos`
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'appconexion_development'
+  AND fk.table_name = 'alumnos'
+[0m
+  [1m[35m (1.0ms)[0m  SHOW CREATE TABLE `alumnos`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'appconexion_development'
+  AND fk.table_name = 'materia'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `materia`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'appconexion_development'
+  AND fk.table_name = 'proyectos'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `proyectos`
+  [1m[36m (386.0ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (456.0ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateAlumnos (20160613221644)
+  [1m[35m (369.0ms)[0m  CREATE TABLE `alumnos` (`id` int(11) auto_increment PRIMARY KEY, `nombre` varchar(255), `apellido` varchar(255), `nac` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160613221644')
+  [1m[36m (17.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMateria (20160613221827)
+  [1m[35m (324.0ms)[0m  CREATE TABLE `materia` (`id` int(11) auto_increment PRIMARY KEY, `nombre` varchar(255), `grado` varchar(255), `proyecto_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_materia_on_proyecto_id`  (`proyecto_id`) ) ENGINE=InnoDB
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160613221827')
+  [1m[36m (30.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProyectos (20160613221852)
+  [1m[35m (526.0ms)[0m  CREATE TABLE `proyectos` (`id` int(11) auto_increment PRIMARY KEY, `nombre_proyecto` varchar(255), `horas` varchar(255), `alumno_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_proyectos_on_alumno_id`  (`alumno_id`) ) ENGINE=InnoDB
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160613221852')
+  [1m[36m (46.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'appconexion_development'
+  AND fk.table_name = 'alumnos'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `alumnos`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'appconexion_development'
+  AND fk.table_name = 'materia'
+[0m
+  [1m[35m (1.0ms)[0m  SHOW CREATE TABLE `materia`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'appconexion_development'
+  AND fk.table_name = 'proyectos'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `proyectos`
